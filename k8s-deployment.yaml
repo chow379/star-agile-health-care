@@ -18,7 +18,7 @@ spec:
       - name: star-agile-healthcare-container
         image: chowthri/health-care:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 8082
 ---
 apiVersion: v1
 kind: Service
@@ -31,5 +31,5 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 8080
+    targetPort: 8082
     nodePort: 30036
