@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: star-agile-healthcare-deploy
+  labels:
+    app: star-agile-healthcare
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: star-agile-healthcare
+  template:
+    metadata:
+      labels:
+        app: star-agile-healthcare
+    spec:
+      containers:
+      - name: star-agile-healthcare-container
+        image: chow379/insure-app:v1.0.1  # <-- Change to your actual Docker image
+        ports:
+        - containerPort: 8080            # <-- Change if your app runs on a different port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: star-agile-healthcare-service
+spec:
+  selector:
+    app: star-agile-healthcare
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080                  # <-- Should match containerPort above
+    nodePort: 30036                   # <-- Exposes service on this port of the node
