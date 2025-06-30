@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
       - name: star-agile-healthcare-container
-        image: chowthri/health-care:latest
+        image: chowthri/health-care:IMAGE_TAG   # Placeholder to be replaced in Jenkins
         ports:
         - containerPort: 8082
+        imagePullPolicy: Always                 # ✅ Important for always pulling the new image
 ---
 apiVersion: v1
 kind: Service
