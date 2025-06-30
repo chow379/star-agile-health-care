@@ -5,7 +5,7 @@ metadata:
   labels:
     app: star-agile-healthcare
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: star-agile-healthcare
